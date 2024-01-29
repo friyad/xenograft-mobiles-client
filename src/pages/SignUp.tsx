@@ -56,10 +56,10 @@ const SignUp = () => {
     >
       <div className="-mt-[8%] w-full max-w-md px-2 xsm:px-0">
         <h3 className="text-sm mxl:text-lg 3xl:text-xl font-medium text-center">
-          Welcome back!
+          Welcome!
         </h3>
         <h1 className="text-2xl mxl:text-3xl 3xl:text-4xl text-center font-black text-primary mb-5 mxl:mb-7 3xl:mb-10">
-          Xeno<span className="text-[#434B60]">Graft</span>
+          Xeno<span className="text-cusBlack">Graft</span>
         </h1>
 
         <div className="flex flex-col justify-start bg-white/70 rounded-xl max-w-xs 2xl:max-w-sm w-full shadow-[0px_34px_64px_0px_#b1c8e82e] p-6 3xl:p-10 mx-auto overflow-hidden">
