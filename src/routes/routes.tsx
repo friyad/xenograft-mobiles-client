@@ -1,5 +1,4 @@
 import App from "@/App";
-import Home from "@/pages/Home";
 import Inventory from "@/pages/Inventory";
 import Sell from "@/pages/Sell";
 import SellsHistory from "@/pages/SellsHistory";
@@ -14,18 +13,14 @@ export const routes = createBrowserRouter([
     children: [
       {
         path: "",
-        element: <Home />,
-      },
-      {
-        path: "dashboard",
         element: <Inventory />,
       },
       {
-        path: "dashboard/sell",
+        path: "sell",
         element: <Sell />,
       },
       {
-        path: "dashboard/sell-history",
+        path: "sell-history",
         element: <SellsHistory />,
       },
     ],
