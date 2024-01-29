@@ -1,8 +1,12 @@
+import DashboardLayout from "@/layouts/DashboardLayout";
+
 const Sell = () => {
   return (
-    <div>
-      <h1> This is Sell</h1>
-    </div>
+    <DashboardLayout>
+      <div>
+        <h1> This is Sell</h1>
+      </div>
+    </DashboardLayout>
   );
 };
 

@@ -16,11 +16,11 @@ export const routes = createBrowserRouter([
         element: <Inventory />,
       },
       {
-        path: "sell",
+        path: "sale",
         element: <Sell />,
       },
       {
-        path: "sell-history",
+        path: "sale-history",
         element: <SellsHistory />,
       },
     ],

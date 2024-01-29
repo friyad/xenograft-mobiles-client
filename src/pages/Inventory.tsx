@@ -1,8 +1,12 @@
+import DashboardLayout from "@/layouts/DashboardLayout";
+
 const Inventory = () => {
   return (
-    <div>
-      <h1> Hello world this is Inventory</h1>
-    </div>
+    <DashboardLayout>
+      <section className="">
+        <h1> Hello world this is Inventory</h1>
+      </section>
+    </DashboardLayout>
   );
 };
 

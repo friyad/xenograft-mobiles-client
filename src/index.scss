@@ -74,3 +74,46 @@
     @apply bg-background text-foreground;
   }
 }
+
+.sad {
+  // background: linear-gradient(180deg, #5676fe 0%, #479cfe 41.71%, #27eeff 100%);
+  // background: hsla(202, 94%, 48%, 0.993);
+}
+
+.nav-items-ul {
+  li {
+    @apply w-full pl-5 hover:bg-cusGray-300/60 relative;
+  }
+  a {
+    @apply inline-block w-full  before:bg-primary;
+  }
+  svg {
+    @apply text-cusBlack/60;
+  }
+  button {
+    @apply w-full py-5 pr-8 pl-4 flex justify-start items-center gap-3;
+  }
+  span {
+    @apply text-lg font-semibold text-cusBlack/80;
+  }
+
+  // Sidebar item active styles
+  a.active::before {
+    content: "";
+    position: absolute;
+    left: 0px;
+    top: 50%;
+    width: 10px;
+    height: 100%;
+    border-radius: 0px 9999px 9999px 0px;
+    transform: translateY(-50%);
+  }
+  a.active {
+    svg {
+      @apply text-primary;
+    }
+    span {
+      @apply font-bold text-primary;
+    }
+  }
+}
