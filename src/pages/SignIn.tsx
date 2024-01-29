@@ -53,13 +53,15 @@ const SignIn = () => {
       }}
       className="h-screen w-full flex flex-col justify-center items-center"
     >
-      <div className="-mt-[8%] w-full max-w-md">
-        <h3 className="text-xl font-medium text-center">Welcome back!</h3>
-        <h1 className="text-4xl text-center font-black text-primary mb-10">
+      <div className="-mt-[8%] w-full max-w-md px-2 xsm:px-0">
+        <h3 className="text-sm mxl:text-lg 3xl:text-xl font-medium text-center">
+          Welcome back!
+        </h3>
+        <h1 className="text-2xl mxl:text-3xl 3xl:text-4xl text-center font-black text-primary mb-5 mxl:mb-7 3xl:mb-10">
           Xeno<span className="text-[#434B60]">Graft</span>
         </h1>
 
-        <div className="flex flex-col justify-start bg-white/70 rounded-xl max-w-sm w-full shadow-[0px_34px_64px_0px_#b1c8e82e] p-10 mx-auto overflow-hidden">
+        <div className="flex flex-col justify-start bg-white/70 rounded-xl max-w-xs 2xl:max-w-sm w-full shadow-[0px_34px_64px_0px_#b1c8e82e] p-6 3xl:p-10 mx-auto overflow-hidden">
           <div
             id="signInFormContent"
             className={`transition-all duration-300 ease-out ${
@@ -68,13 +70,13 @@ const SignIn = () => {
                 : "translate-x-0"
             }`}
           >
-            <h1 className="text-3xl font-black text-primary text-left uppercase">
+            <h1 className="text-xl mxl:text-2xl 3xl:text-3xl font-black text-primary text-left uppercase">
               Sign In
             </h1>
 
             <form
               onSubmit={handleSubmit(handleSignInSubmit)}
-              className="w-full mt-8"
+              className="w-full mt-4 mxl:mt-6 3xl:mt-8"
             >
               <div className="grid w-full items-center gap-1.5">
                 <Label htmlFor="email" className="text-gray-500">
@@ -84,10 +86,11 @@ const SignIn = () => {
                   type="email"
                   id="email"
                   {...register("email", { required: true })}
-                  className="text-lg font-medium h-12 focus-visible:ring-primary mt-1"
                 />
                 {errors.email && (
-                  <p className="text-red-500 text-sm">{errors.email.message}</p>
+                  <p className="text-red-500 text-xs mxl:text-sm">
+                    {errors.email.message}
+                  </p>
                 )}
               </div>
 
@@ -99,22 +102,21 @@ const SignIn = () => {
                   type="password"
                   id="password"
                   {...register("password", { required: true })}
-                  className="text-lg font-medium h-12 focus-visible:ring-primary mt-1"
                 />
                 {errors.password && (
-                  <p className="text-red-500 text-sm">
+                  <p className="text-red-500 text-xs mxl:text-sm">
                     {errors.password.message}
                   </p>
                 )}
               </div>
 
               <div className="flex justify-between items-center mt-4">
-                <p className="text-sm">Don't have any account?</p>
+                <p className="text-xs mxl:text-sm">Don't have any account?</p>
                 <Link
                   to="/signup"
                   unstable_viewTransition
                   onClick={() => dispatch(setAuthFormAnimState("fromSignIn"))}
-                  className="text-primary underline-offset-3 underline font-semibold cursor-pointer"
+                  className="text-primary underline-offset-3 underline font-semibold cursor-pointer text-sm 2xl:text-base"
                 >
                   Sign Up
                 </Link>
@@ -123,7 +125,7 @@ const SignIn = () => {
               <Button
                 type="submit"
                 variant="default"
-                className="mt-8 uppercase w-full"
+                className="mt-4 mxl:mt-6 3xl:mt-8 uppercase w-full"
                 size="lg"
               >
                 Sign In
