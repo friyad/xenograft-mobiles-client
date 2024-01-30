@@ -1,30 +1,31 @@
 import { Card, CardContent, CardFooter, CardHeader } from "../ui/card";
 import { Button } from "../ui/button";
+import { Link } from "react-router-dom";
 
-const data = {
-  name: "Samsung Galaxy S20 Ultra", //
-  price: 999.99, //
+export const data = {
+  name: "Samsung Galaxy S20 Ultra", // ----
+  price: 999.99, // ---
   quantity: 50,
-  images: ["image1.jpg", "image2.jpg"], //
-  releasedDate: new Date("2024-02-01"),
-  brand: "Samsung",
-  model: "S20 Ultra", //
-  opSystem: "Android",
-  storageCapacityGB: [128, 256], //
-  ram: [12, 16], //
+  images: ["image1.jpg", "image2.jpg"], // ----
+  releasedDate: new Date("2024-02-01"), // ----
+  brand: "Samsung", // ----
+  model: "S20 Ultra", // ---
+  opSystem: "Android", // ---
+  storageCapacityGB: [128, 256], // ----
+  ram: [12, 16], // ---
   processor:
-    "Octa-core (1x3.3 GHz Cortex-X4 & 5x3.2 GHz Cortex-A720 & 2x2.3 GHz Cortex-A520)",
-  screenSize: 6.78, //
-  color: "Mystic Black",
-  cellularTechnology: "4G", //
-  battery: 5000, //
-  simCard: "Nano",
-  camera: [50, 12], //
-  charger: 65,
-  usbType: "USB Type-C",
-  aboutThisPhone: "High-end smartphone with advanced camera features.",
-  condition: "New",
-  rating: 4.8,
+    "Octa-core (1x3.3 GHz Cortex-X4 & 5x3.2 GHz Cortex-A720 & 2x2.3 GHz Cortex-A520)", // ---
+  screenSize: 6.78, // ---
+  color: "Mystic Black", // ---
+  cellularTechnology: "4G", // ---
+  battery: 5000, // ---
+  simCard: "Nano", // ---
+  camera: [50, 12], // ---
+  charger: 65, // ---
+  usbType: "USB Type-C", // ---
+  aboutThisPhone: "High-end smartphone with advanced camera features.", // ------
+  condition: "New", // ---
+  rating: 4.8, // ---
   sells: 20,
   inStock: true,
 };
@@ -39,18 +40,22 @@ const SmartPhoneCard = ({ cardView }: SmartPhoneCardProps) => {
       {cardView ? (
         // ------------------------ Grid View ------------------------
         <Card className="shadow-2xl shadow-cusBlack/10 hover:shadow-sm transition-all duration-200 group">
-          <CardHeader className="cursor-pointer relative overflow-hidden">
-            <img
-              src="https://static-01.daraz.com.bd/p/8f5341e8106e7070aaaec56be0a2647e.jpg_300x0q75.webp"
-              alt=""
-              className="group-hover:scale-110 transition-transform duration-300"
-            />
-          </CardHeader>
+          <Link to={`/inventory/46464`} unstable_viewTransition>
+            <CardHeader className="cursor-pointer relative overflow-hidden">
+              <img
+                src="https://static-01.daraz.com.bd/p/8f5341e8106e7070aaaec56be0a2647e.jpg_300x0q75.webp"
+                alt=""
+                className="group-hover:scale-110 transition-transform duration-300"
+              />
+            </CardHeader>
+          </Link>
 
           <CardContent className="border-t">
-            <h3 className="text-lg font-semibold text-cusBlack cursor-pointer group-hover:text-primary">
-              {data.name}
-            </h3>
+            <Link to={`/inventory/46464`} unstable_viewTransition>
+              <h3 className="text-lg font-semibold text-cusBlack cursor-pointer group-hover:text-primary">
+                {data.name}
+              </h3>
+            </Link>
             <div className="flex justify-between items-center">
               <h3 className="text-xl font-bold text-cusBlack mt-2">
                 ${data.price}
@@ -105,19 +110,23 @@ const SmartPhoneCard = ({ cardView }: SmartPhoneCardProps) => {
       ) : (
         // ------------------------ List View ------------------------
         <Card className="shadow-md shadow-cusBlack/10 hover:shadow-sm transition-all duration-200 group flex">
-          <CardHeader className="cursor-pointer relative overflow-hidden size-[250px]">
-            <img
-              src="https://static-01.daraz.com.bd/p/8f5341e8106e7070aaaec56be0a2647e.jpg_300x0q75.webp"
-              alt=""
-              className="group-hover:scale-110 transition-transform duration-300"
-            />
-          </CardHeader>
+          <Link to={`/inventory/46464`} unstable_viewTransition>
+            <CardHeader className="cursor-pointer relative overflow-hidden size-[250px]">
+              <img
+                src="https://static-01.daraz.com.bd/p/8f5341e8106e7070aaaec56be0a2647e.jpg_300x0q75.webp"
+                alt=""
+                className="group-hover:scale-110 transition-transform duration-300"
+              />
+            </CardHeader>
+          </Link>
 
           <div className="flex flex-col justify-between border-l flex-1">
             <CardContent className="">
-              <h3 className="text-xl font-semibold text-cusBlack cursor-pointer group-hover:text-primary">
-                {data.name}
-              </h3>
+              <Link to={`/inventory/46464`} unstable_viewTransition>
+                <h3 className="text-xl font-semibold text-cusBlack cursor-pointer group-hover:text-primary">
+                  {data.name}
+                </h3>
+              </Link>
               <div className="flex justify-between items-center">
                 <h3 className="text-2xl font-bold text-cusBlack mt-2">
                   ${data.price}

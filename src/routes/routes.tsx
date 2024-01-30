@@ -1,4 +1,5 @@
 import App from "@/App";
+import SmartphoneCardDetails from "@/pages/SmartphoneDetails";
 import Inventory from "@/pages/Inventory";
 import Sell from "@/pages/Sell";
 import SellsHistory from "@/pages/SellsHistory";
@@ -14,6 +15,14 @@ export const routes = createBrowserRouter([
       {
         path: "",
         element: <Inventory />,
+      },
+      {
+        path: "/inventory",
+        element: <Inventory />,
+      },
+      {
+        path: "/inventory/:phoneID",
+        element: <SmartphoneCardDetails />,
       },
       {
         path: "sale",
