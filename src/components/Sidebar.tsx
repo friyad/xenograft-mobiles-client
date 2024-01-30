@@ -17,7 +17,7 @@ const Sidebar = () => {
 
       <ul className="flex flex-col justify-start nav-items-ul mt-2">
         <li>
-          <NavLink to="/">
+          <NavLink to="/" unstable_viewTransition>
             <button>
               <KanbanSquare />
               <span>Inventory</span>
@@ -25,7 +25,7 @@ const Sidebar = () => {
           </NavLink>
         </li>
         <li>
-          <NavLink to="/sale">
+          <NavLink to="/sale" unstable_viewTransition>
             <button>
               <BadgeDollarSign />
               <span>Sale</span>
@@ -33,7 +33,7 @@ const Sidebar = () => {
           </NavLink>
         </li>
         <li>
-          <NavLink to="/sale-history">
+          <NavLink to="/sale-history" unstable_viewTransition>
             <button>
               <History />
               <span>Sales History</span>
