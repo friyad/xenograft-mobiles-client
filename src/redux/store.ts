@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import globalReducer from "./features/global/globalSlice";
+import smartphoneReducer from "./features/smartphone/smartphoneSlice";
 
 const store = configureStore({
   reducer: {
     global: globalReducer,
+    smartphone: smartphoneReducer,
   },
 });
 

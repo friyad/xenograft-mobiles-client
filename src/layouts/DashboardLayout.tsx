@@ -18,7 +18,7 @@ const DashboardLayout = ({ children }: DashboardProps) => {
       direction="horizontal"
       className="bg-cusGray-300 min-h-screen overflow-hidden "
     >
-      <ResizablePanel defaultSize={14} minSize={12} maxSize={18}>
+      <ResizablePanel defaultSize={14} minSize={12} maxSize={18} className="">
         <div className="bg-cusGray-200 h-full rounded-r-3xl overflow-hidden">
           <Sidebar />
         </div>
@@ -29,7 +29,7 @@ const DashboardLayout = ({ children }: DashboardProps) => {
       <ResizablePanel defaultSize={82}>
         <div className="h-full">
           <Navbar />
-          <div className="mt-5 bg-cusGray-100 h-[calc(100%-100px)] rounded-t-3xl p-8 shadow-[0px_34px_64px_0px_#b1c8e82e]">
+          <div className="mt-5 bg-cusGray-100 h-[calc(100vh-100px)] rounded-t-3xl shadow-[0px_34px_64px_0px_#b1c8e82e] overflow-auto">
             {children}
           </div>
         </div>
