@@ -78,6 +78,11 @@ const SmartphoneCardDetails = () => {
                         Update Info
                       </Button>
                       <Button
+                        onClick={() =>
+                          navigate(`/inventory/duplicate/24312312`, {
+                            unstable_viewTransition: true,
+                          })
+                        }
                         variant="destructive"
                         size="lg"
                         className="rounded-lg bg-primary hover:bg-primary uppercase"
