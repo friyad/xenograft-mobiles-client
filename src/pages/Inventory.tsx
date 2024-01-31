@@ -6,8 +6,10 @@ import { Grid2X2, PlusIcon, Rows3 } from "lucide-react";
 import SmartPhoneCard from "@/components/inventory/SmartPhoneCard";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { setCardView } from "@/redux/features/smartphone/smartphoneSlice";
+import { useNavigate } from "react-router-dom";
 
 const Inventory = () => {
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const { cardView } = useAppSelector((state) => state.smartphone);
 
@@ -64,6 +66,9 @@ const Inventory = () => {
             <Button
               size="lg"
               variant="default"
+              onClick={() =>
+                navigate("/inventory/add", { unstable_viewTransition: true })
+              }
               className="uppercase flex justify-center items-center gap-1 px-5 h-12"
             >
               <PlusIcon className="w-5 h-auto" /> <span>Add Smartphone</span>

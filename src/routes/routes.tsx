@@ -7,6 +7,7 @@ import SignIn from "@/pages/SignIn";
 import SignUp from "@/pages/SignUp";
 import SmartphoneUpdate from "@/pages/SmartphoneUpdate";
 import { createBrowserRouter } from "react-router-dom";
+import AddSmartphone from "@/pages/AddSmartphone";
 
 export const routes = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ export const routes = createBrowserRouter([
       {
         path: "/inventory",
         element: <Inventory />,
+      },
+      {
+        path: "/inventory/add",
+        element: <AddSmartphone />,
       },
       {
         path: "/inventory/:phoneID",

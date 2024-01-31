@@ -1,7 +1,7 @@
 import { IInputItem } from "@/types/globalTypes";
 
 // This data will generate the JSX form inputs dynamically using loop
-export const smartPhoneUpdateFormData: IInputItem[] = [
+export const smartPhoneFormInputsData: IInputItem[] = [
   { id: 1, field: "name", type: "text", name: "Name", colSpan: 4 },
   { id: 2, field: "price", type: "number", name: "Price", colSpan: 2 },
   { id: 3, field: "quantity", type: "number", name: "Quantity", colSpan: 2 },

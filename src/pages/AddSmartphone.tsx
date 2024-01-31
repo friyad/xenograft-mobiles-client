@@ -16,7 +16,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Label } from "@radix-ui/react-label";
 import { ArrowLeft } from "lucide-react";
 import { useForm } from "react-hook-form";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { smartPhoneFormInputsData } from "@/data/smartphone";
 import {
@@ -31,38 +31,7 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import PhonePhotoUpload from "@/components/inventory/PhonePhotoUpload";
 
-const defaultValuesaa = {
-  name: "",
-  price: 0,
-  quantity: 0,
-  images: [""],
-  releasedDate: "",
-  brand: "",
-  model: "",
-  opSystem: "",
-  storageCapacityGB: 0,
-  storageCapacityGB2: 0,
-  ram: 0,
-  ram2: 0,
-  processor: "",
-  screenSize: 0,
-  color: "",
-  cellularTechnology: "",
-  battery: 0,
-  simCard: "",
-  camera: 0,
-  camera2: 0,
-  charger: 0,
-  usbType: "",
-  aboutThisPhone: "",
-  condition: "New",
-  rating: 0,
-  sells: 0,
-  inStock: true,
-};
-
-const SmartphoneUpdate = () => {
-  const { phoneID } = useParams();
+const AddSmartphone = () => {
   const navigate = useNavigate();
   const [date, setDate] = useState<Date>();
   const {
@@ -75,10 +44,9 @@ const SmartphoneUpdate = () => {
     formState: { errors, defaultValues },
   } = useForm<ISmartPhone>({
     resolver: zodResolver(smartPhoneValidation),
-    // defaultValues: defaultValues,
   });
 
-  const handleUpdateSubmit = (data: ISmartPhone) => {
+  const handleAddSubmit = (data: ISmartPhone) => {
     if (data.images.length < 3) {
       setError("images", new Error("Please upload 3 images"), {
         shouldFocus: true,
@@ -103,11 +71,11 @@ const SmartphoneUpdate = () => {
           </Button>
 
           <h2 className="text-3xl text-cusBlack font-bold uppercase ml-8">
-            Update Smartphone
+            Add A New Smartphone
           </h2>
         </div>
 
-        <form onSubmit={handleSubmit(handleUpdateSubmit)}>
+        <form onSubmit={handleSubmit(handleAddSubmit)}>
           <div className="grid grid-cols-4 gap-x-10 gap-y-5 mt-8 max-w-screen-sm mx-auto smartphoneForm justify-start items-start">
             <div className="grid w-full items-center gap-1.5 col-span-4">
               <Label className="text-gray-500">Images</Label>
@@ -124,7 +92,7 @@ const SmartphoneUpdate = () => {
             </div>
 
             <div className="grid w-full items-center gap-1.5 col-span-4">
-              <Label htmlFor="update_aboutThisPhone" className="text-gray-500">
+              <Label htmlFor="add_aboutThisPhone" className="text-gray-500">
                 About This Phone
               </Label>
               <Textarea
@@ -139,7 +107,7 @@ const SmartphoneUpdate = () => {
             </div>
 
             <div className="grid w-full items-center gap-1.5 col-span-2">
-              <Label htmlFor="update_releasedDate" className="text-gray-500">
+              <Label htmlFor="add_releasedDate" className="text-gray-500">
                 Release Date
               </Label>
               <Popover>
@@ -158,7 +126,7 @@ const SmartphoneUpdate = () => {
                 <PopoverContent className="w-auto p-0">
                   <Calendar
                     {...register("releasedDate")}
-                    id="update_releasedDate"
+                    id="add_releasedDate"
                     mode="single"
                     selected={date}
                     onSelect={(e: any) => {
@@ -178,7 +146,7 @@ const SmartphoneUpdate = () => {
             </div>
 
             <div className="grid w-full items-center gap-1.5 col-span-2">
-              <Label htmlFor="update_condition" className="text-gray-500">
+              <Label htmlFor="add_condition" className="text-gray-500">
                 Phone Condition
               </Label>
               <Select
@@ -220,12 +188,12 @@ const SmartphoneUpdate = () => {
                     gridColumn: `span ${colSpan} / span ${colSpan}`,
                   }}
                 >
-                  <Label htmlFor={`update_${field}`} className="text-gray-500">
+                  <Label htmlFor={`add_${field}`} className="text-gray-500">
                     {name}
                   </Label>
                   <Input
                     type={type}
-                    id={`update_${field}`}
+                    id={`add_${field}`}
                     placeholder="Type here..."
                     onKeyDown={(evt) => {
                       if (type === "number") {
@@ -266,4 +234,4 @@ const SmartphoneUpdate = () => {
   );
 };
 
-export default SmartphoneUpdate;
+export default AddSmartphone;
