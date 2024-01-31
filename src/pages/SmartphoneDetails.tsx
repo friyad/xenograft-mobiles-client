@@ -51,6 +51,11 @@ const SmartphoneCardDetails = () => {
 
                 <div className="flex justify-between gap-3 w-fit mt-8">
                   <Button
+                    onClick={() =>
+                      navigate("/inventory/update/13312", {
+                        unstable_viewTransition: true,
+                      })
+                    }
                     variant="destructive"
                     size="lg"
                     className="rounded-lg bg-black hover:bg-black uppercase"
