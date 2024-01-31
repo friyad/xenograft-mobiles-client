@@ -26,6 +26,7 @@ const Inventory = () => {
           <div className="flex justify-between items-center mt-3 gap-8">
             <div className="flex w-11/12 items-center space-x-2">
               <Input
+                autoFocus
                 type="text"
                 placeholder="Search..."
                 className="transition-none border-2 border-slate-200 focus-visible:ring-0"
