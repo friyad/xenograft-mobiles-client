@@ -4,12 +4,12 @@ import { NavLink } from "react-router-dom";
 const Sidebar = () => {
   return (
     <div className="">
-      <div className="bg-cusGray-100 border-b border-cusGray-300 p-8">
+      <div className="bg-cusGray-100 border-b border-cusGray-300 px-8 md:p-8">
         <a href="/">
-          <h1 className="text-2xl mxl:text-3xl 3xl:text-3xl font-black text-primary uppercase">
+          <h1 className="text-xl 2xl:text-2xl 3xl:text-3xl font-black text-primary uppercase whitespace-nowrap">
             Xeno<span className="text-cusBlack">Graft</span>
           </h1>
-          <p className="text-cusBlack/70 font-medium text-sm mb-5 uppercase">
+          <p className="text-cusBlack/70 font-medium text-2xs 2xl:text-xs 3xl:text-sm mb-5 uppercase whitespace-nowrap">
             Sync, Manage, Thrive
           </p>
         </a>

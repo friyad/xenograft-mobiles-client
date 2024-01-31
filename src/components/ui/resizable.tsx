@@ -27,13 +27,13 @@ const ResizableHandle = ({
 }) => (
   <ResizablePrimitive.PanelResizeHandle
     className={cn(
-      "relative flex mx-7 w-px items-center justify-center bg-border after:absolute after:inset-y-0 after:left-1/2 after:w-1 after:-translate-x-1/2 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring focus-visible:ring-offset-1 data-[panel-group-direction=vertical]:h-px data-[panel-group-direction=vertical]:w-full data-[panel-group-direction=vertical]:after:left-0 data-[panel-group-direction=vertical]:after:h-1 data-[panel-group-direction=vertical]:after:w-full data-[panel-group-direction=vertical]:after:-translate-y-1/2 data-[panel-group-direction=vertical]:after:translate-x-0 [&[data-panel-group-direction=vertical]>div]:rotate-90 group",
+      "relative flex mx-3 lg:mx-4 xl:mx-5 3xl:mx-7 w-px items-center justify-center bg-border after:absolute after:inset-y-0 after:left-1/2 after:w-1 after:-translate-x-1/2 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring focus-visible:ring-offset-1 data-[panel-group-direction=vertical]:h-px data-[panel-group-direction=vertical]:w-full data-[panel-group-direction=vertical]:after:left-0 data-[panel-group-direction=vertical]:after:h-1 data-[panel-group-direction=vertical]:after:w-full data-[panel-group-direction=vertical]:after:-translate-y-1/2 data-[panel-group-direction=vertical]:after:translate-x-0 [&[data-panel-group-direction=vertical]>div]:rotate-90 group",
       className
     )}
     {...props}
   >
     {withHandle && (
-      <div className="z-10 flex h-14 group-data-[resize-handle-active=pointer]:h-[80%] w-4 items-center justify-center rounded-full  bg-cusGray-200 transition-all duration-200">
+      <div className="z-10 flex h-14 group-data-[resize-handle-active=pointer]:h-[80%] w-3 xl:w-4 items-center justify-center rounded-full  bg-cusGray-200 transition-all duration-200">
         <GripVertical className="h-8 w-auto" />
       </div>
     )}

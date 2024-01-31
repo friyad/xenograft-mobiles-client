@@ -26,7 +26,7 @@ const SmartphoneCardDetails = () => {
   return (
     <>
       <AlertDialog>
-        <DashboardLayout>
+        <DashboardLayout title="">
           <div className="p-8">
             <Button
               onClick={() =>

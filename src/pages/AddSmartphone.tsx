@@ -57,8 +57,8 @@ const AddSmartphone = () => {
   };
 
   return (
-    <DashboardLayout>
-      <div className="p-8 pb-20">
+    <DashboardLayout title="">
+      <div className="p-8 pb-20 bg-cusGray-100">
         <div className="flex justify-start items-center">
           <Button
             // @ts-ignore

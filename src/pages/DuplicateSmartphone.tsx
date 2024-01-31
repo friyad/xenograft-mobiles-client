@@ -89,7 +89,7 @@ const DuplicateSmartphone = () => {
   };
 
   return (
-    <DashboardLayout>
+    <DashboardLayout title="">
       <div className="p-8 pb-20">
         <div className="flex justify-start items-center">
           <Button

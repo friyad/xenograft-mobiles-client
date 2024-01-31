@@ -82,19 +82,19 @@
 
 .nav-items-ul {
   li {
-    @apply w-full pl-5 hover:bg-cusGray-300/60 relative;
+    @apply w-full pl-2 2xl:pl-5 hover:bg-cusGray-300/60 relative;
   }
   a {
-    @apply inline-block w-full  before:bg-primary;
+    @apply inline-block w-full before:bg-primary before:w-1 2xl:before:w-1.5 3xl:before:w-2;
   }
   svg {
-    @apply text-cusBlack/60;
+    @apply text-cusBlack/60 size-4 2xl:size-5 3xl:size-6;
   }
   button {
-    @apply w-full py-5 pr-8 pl-4 flex justify-start items-center gap-3;
+    @apply w-full py-4 3xl:py-5 pr-8 pl-4 flex justify-start items-center gap-3;
   }
   span {
-    @apply text-lg font-semibold text-cusBlack/80;
+    @apply text-sm 2xl:text-base 3xl:text-lg font-semibold text-cusBlack/80 whitespace-nowrap;
   }
 
   // Sidebar item active styles
@@ -103,7 +103,6 @@
     position: absolute;
     left: 0px;
     top: 50%;
-    width: 10px;
     height: 100%;
     border-radius: 0px 9999px 9999px 0px;
     transform: translateY(-50%);

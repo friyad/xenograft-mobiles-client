@@ -20,7 +20,7 @@ const Filter = () => {
   ];
 
   return (
-    <div className="mt-4 flex justify-start items-center gap-3">
+    <div className="mt-4 flex justify-start items-center gap-2 lg:gap-3 flex-wrap">
       {filterData.map((item) => {
         return (
           <Popover key={item} onOpenChange={(e: any) => console.log(e)}>
@@ -30,7 +30,10 @@ const Filter = () => {
               </Button>
             </PopoverTrigger>
 
-            <PopoverContent className="w-80">
+            <PopoverContent
+              className="w-80 shadow-[0px_20px_40px_#00000020]"
+              align="end"
+            >
               <div className="grid gap-4">
                 <div className="space-y-2">
                   <h4 className="font-medium leading-none">

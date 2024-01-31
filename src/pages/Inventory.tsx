@@ -14,17 +14,11 @@ const Inventory = () => {
   const { cardView } = useAppSelector((state) => state.smartphone);
 
   return (
-    <DashboardLayout>
+    <DashboardLayout title="Inventory">
       <section className="">
-        <div className="sticky top-0 bg-cusGray-100 p-8 pb-3 z-40">
-          <div className="flex justify-between items-center">
-            <h1 className="text-3xl font-black text-cusBlack uppercase">
-              Inventory
-            </h1>
-          </div>
-
-          <div className="flex justify-between items-center mt-3 gap-8">
-            <div className="flex w-11/12 items-center space-x-2">
+        <div className="sticky top-0 bg-cusGray-100 p-7 md:p-4 lg:p-6 3xl:p-8 !pb-3 z-40">
+          <div className="flex justify-between items-center gap-3 lg:gap-8">
+            <div className="flex w-full lg:w-11/12 items-center space-x-2">
               <Input
                 autoFocus
                 type="text"
@@ -35,32 +29,28 @@ const Inventory = () => {
                 type="submit"
                 variant="default"
                 size="lg"
-                className="uppercase h-12"
+                className="uppercase"
               >
                 Search
               </Button>
             </div>
 
-            <div className="flex justify-end items-center gap-3">
+            <div className="justify-end items-center gap-3 hidden xsm:flex">
               <Button
                 onClick={() => dispatch(setCardView(true))}
                 variant={cardView ? "destructive" : "outline"}
                 size="icon"
-                className={`h-12 w-14 ${
-                  cardView ? "bg-primary hover:bg-primary" : ""
-                }`}
+                className={`${cardView ? "bg-primary hover:bg-primary" : ""}`}
               >
-                <Grid2X2 className="size-6" />
+                <Grid2X2 className="size-5 2xl:size-6" />
               </Button>
               <Button
                 onClick={() => dispatch(setCardView(false))}
                 variant={!cardView ? "destructive" : "outline"}
                 size="icon"
-                className={`h-12 w-14 ${
-                  !cardView ? "bg-primary hover:bg-primary" : ""
-                }`}
+                className={`${!cardView ? "bg-primary hover:bg-primary" : ""}`}
               >
-                <Rows3 className="size-6" />
+                <Rows3 className="size-5 2xl:size-6" />
               </Button>
             </div>
 
@@ -70,9 +60,10 @@ const Inventory = () => {
               onClick={() =>
                 navigate("/inventory/add", { unstable_viewTransition: true })
               }
-              className="uppercase flex justify-center items-center gap-1 px-5 h-12"
+              className="uppercase flex justify-center items-center gap-1 px-3 lg:px-5"
             >
-              <PlusIcon className="w-5 h-auto" /> <span>Add Smartphone</span>
+              <PlusIcon className="size-5" />{" "}
+              <span className="hidden lg:inline-block">Add Smartphone</span>
             </Button>
           </div>
 
@@ -80,8 +71,10 @@ const Inventory = () => {
         </div>
 
         <div
-          className={`grid gap-6 mt-5 px-8 pb-8 ${
-            cardView ? "grid-cols-5" : "grid-cols-2"
+          className={`grid gap-3 2xl:gap-6 px-7 md:px-4 lg:px-6 3xl:px-8 pb-8 ${
+            cardView
+              ? "grid-cols-1 xsm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 3xl:grid-cols-5 min-[2200px]:grid-cols-6"
+              : "grid-cols-1 xl:grid-cols-2"
           }`}
         >
           {[1, 2, 3, 4, 5].map((item) => {
