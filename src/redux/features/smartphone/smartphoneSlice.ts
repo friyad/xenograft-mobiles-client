@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 interface SmartPhoneState {
   cardView: boolean;
@@ -12,7 +12,7 @@ const smartPhoneSlice = createSlice({
   name: "smartPhone",
   initialState,
   reducers: {
-    setCardView: (state, action) => {
+    setCardView: (state: SmartPhoneState, action: PayloadAction<boolean>) => {
       state.cardView = action.payload;
     },
   },

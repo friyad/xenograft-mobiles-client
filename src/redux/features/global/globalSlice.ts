@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 interface GlobalState {
   authFormAnimState: string | null;
@@ -12,7 +12,10 @@ const globalSlice = createSlice({
   name: "global",
   initialState,
   reducers: {
-    setAuthFormAnimState: (state, action) => {
+    setAuthFormAnimState: (
+      state: GlobalState,
+      action: PayloadAction<string>
+    ) => {
       state.authFormAnimState = action.payload;
     },
   },
