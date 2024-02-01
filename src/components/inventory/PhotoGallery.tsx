@@ -21,14 +21,14 @@ const PhotoGallery = () => {
   ];
 
   return (
-    <div className="grid gap-4 lg:grid-cols-5 max-h-[500px]">
+    <div className="grid gap-4 lg:grid-cols-5 max-h-[700px] lg:max-h-[500px]">
       <div className="order-last flex gap-4 lg:order-none lg:flex-col">
         {thumbs.map((thumb) => {
           return (
             <div
               key={thumb.id}
               onClick={() => setPreview(thumb.img)}
-              className="overflow-hidden rounded-lg bg-gray-100 hover:border-2 border-primary cursor-pointer"
+              className="overflow-hidden rounded-lg bg-gray-100 hover:border-2 border-primary cursor-pointer max-h-[160px]"
             >
               <img
                 src={thumb.img}

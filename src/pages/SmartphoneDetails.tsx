@@ -29,42 +29,43 @@ const SmartphoneCardDetails = () => {
         <DashboardLayout title="">
           <div className="p-8">
             <Button
-              onClick={() =>
-                navigate("/inventory", { unstable_viewTransition: true })
-              }
+              // @ts-ignore
+              onClick={() => navigate(-1, { unstable_viewTransition: true })}
               variant="outline"
               size="icon"
-              className="size-12 rounded-full"
+              className=""
             >
               <ArrowLeft />
             </Button>
 
-            <div className="pb-6 sm:pb-8 lg:pb-12">
-              <div className="mx-auto max-w-screen-xl px-4 md:px-0">
-                <div className="grid gap-14 md:grid-cols-2">
+            <div className="py-6 sm:py-8 lg:py-12">
+              <div className="mx-auto max-w-screen-xl">
+                <div className="grid gap-6 xl:gap-14 lg:grid-cols-2">
                   <PhotoGallery />
 
                   <div className="flex flex-col">
                     <div>
-                      <h2 className="text-2xl font-bold text-gray-800 lg:text-3xl mb-2 md:mb-3">
+                      <h1 className="font-bold text-gray-800 mb-2 md:mb-3">
                         {data.name}
-                      </h2>
+                      </h1>
 
-                      <p className="text-lg mb-5">{data.aboutThisPhone}</p>
+                      <p className="text-sm xl:text-base 2xl:text-lg mb-5">
+                        {data.aboutThisPhone}
+                      </p>
 
                       <div>
                         <div className="flex items-end gap-2">
-                          <span className="text-xl font-bold text-gray-800 md:text-3xl">
+                          <h1 className="font-bold text-gray-800">
                             ${data.price}
-                          </span>
+                          </h1>
                         </div>
-                        <span className="text-sm text-gray-500">
+                        <span className="text-xs 2xl:text-sm text-gray-500">
                           incl. VAT plus shipping
                         </span>
                       </div>
                     </div>
 
-                    <div className="flex justify-between gap-3 w-fit mt-8">
+                    <div className="flex justify-between gap-2 xl:gap-3 w-fit mt-8">
                       <Button
                         onClick={() =>
                           navigate("/inventory/update/13312", {
@@ -106,11 +107,11 @@ const SmartphoneCardDetails = () => {
 
               <hr className="my-10" />
 
-              <h2 className="text-xl font-bold text-cusBlack lg:text-2xl uppercase max-w-screen-xl mx-auto mb-3">
+              <h1 className=" font-bold text-cusBlack uppercase max-w-screen-xl mx-auto mb-3">
                 Phone Details
-              </h2>
-              <div className="grid grid-cols-2 gap-8 max-w-screen-xl mx-auto bg-cusGray-200 p-10 rounded-2xl">
-                <Table className="text-lg">
+              </h1>
+              <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-8 max-w-screen-xl mx-auto bg-cusGray-200 xsm:p-3 lg:p-10 rounded-2xl">
+                <Table className="text-sm mxl:text-base 2xl:text-lg">
                   <TableBody>
                     <TableRow>
                       <TableCell>Processor</TableCell>
@@ -152,7 +153,7 @@ const SmartphoneCardDetails = () => {
                     </TableRow>
                   </TableBody>
                 </Table>
-                <Table className="text-lg">
+                <Table className="text-sm mxl:text-base 2xl:text-lg">
                   <TableBody>
                     <TableRow>
                       <TableCell>Color</TableCell>

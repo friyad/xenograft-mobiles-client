@@ -16,7 +16,7 @@ const Inventory = () => {
   return (
     <DashboardLayout title="Inventory">
       <section className="">
-        <div className="sticky top-0 bg-cusGray-100 p-7 md:p-4 lg:p-6 3xl:p-8 !pb-3 z-40">
+        <div className="sticky top-0 bg-cusGray-100 p-7 md:p-4 lg:p-6 3xl:p-8 z-40">
           <div className="flex justify-between items-center gap-3 lg:gap-8">
             <div className="flex w-full lg:w-11/12 items-center space-x-2">
               <Input
