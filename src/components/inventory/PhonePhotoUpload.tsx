@@ -101,7 +101,9 @@ const PhonePhotoUpload = ({
             disabled={images && images.length >= 3}
             {...getInputProps()}
           />
-          <p>Drag 'n' drop some files here, or click to select files</p>
+          <p className="max-w-xs text-center text-sm md:text-base">
+            Drag 'n' drop some files here, or click to select files
+          </p>
         </div>
 
         {fileRejections[0] && (

@@ -70,7 +70,7 @@ const SignIn = () => {
                 : "translate-x-0"
             }`}
           >
-            <h1 className="text-xl mxl:text-2xl 3xl:text-3xl font-black text-primary text-left uppercase">
+            <h1 className="font-black text-primary text-left uppercase">
               Sign In
             </h1>
 

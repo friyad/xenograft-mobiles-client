@@ -13,7 +13,7 @@ import DashboardLayout from "@/layouts/DashboardLayout";
 import { ISmartPhone } from "@/types/globalTypes";
 import { smartPhoneValidation } from "@/validations/inventoryValidations";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Label } from "@radix-ui/react-label";
+import { Label } from "@/components/ui/label";
 import { ArrowLeft } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
@@ -97,18 +97,18 @@ const DuplicateSmartphone = () => {
             onClick={() => navigate(-1, { unstable_viewTransition: true })}
             variant="outline"
             size="icon"
-            className="size-12 rounded-full"
+            className=""
           >
             <ArrowLeft />
           </Button>
 
-          <h2 className="text-3xl text-cusBlack font-bold uppercase ml-8">
+          <h1 className="text-cusBlack font-bold uppercase ml-3 sm:ml-5">
             Duplicate & Edit Smartphone
-          </h2>
+          </h1>
         </div>
 
         <form onSubmit={handleSubmit(handleDuplicateSubmit)}>
-          <div className="grid grid-cols-4 gap-x-10 gap-y-5 mt-8 max-w-screen-sm mx-auto smartphoneForm justify-start items-start">
+          <div className="flex flex-col sm:grid grid-cols-2 sm:grid-cols-4 gap-x-6 lg:gap-x-10 gap-y-5 mt-8 max-w-screen-sm mx-auto smartphoneForm  justify-start items-start">
             <div className="grid w-full items-center gap-1.5 col-span-4">
               <Label className="text-gray-500">Images</Label>
               <PhonePhotoUpload
@@ -191,7 +191,7 @@ const DuplicateSmartphone = () => {
                   clearErrors("condition");
                 }}
               >
-                <SelectTrigger className="h-14 text-lg">
+                <SelectTrigger className="inputEl">
                   <SelectValue placeholder="Select your phone condition" />
                 </SelectTrigger>
                 <SelectContent>
@@ -218,7 +218,7 @@ const DuplicateSmartphone = () => {
               return (
                 <div
                   key={id}
-                  className="grid w-full items-center gap-1.5 col-span-2 relative"
+                  className="grid w-full items-center gap-1.5 relative"
                   style={{
                     gridColumn: `span ${colSpan} / span ${colSpan}`,
                   }}

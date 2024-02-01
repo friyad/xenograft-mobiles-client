@@ -55,9 +55,7 @@ const Navbar = ({ title }: NavbarProps) => {
                   <MenuIcon />
                 </Button>
               </SheetTrigger>
-              <h1 className="text-lg xl:text-xl 2xl:text-2xl 3xl:text-3xl font-black text-cusBlack uppercase">
-                {title}
-              </h1>
+              <h1 className="font-black text-cusBlack uppercase">{title}</h1>
             </div>
 
             <div className="flex justify-end items-center gap-5">
