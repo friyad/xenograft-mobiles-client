@@ -1,4 +1,5 @@
 import { Outlet } from "react-router-dom";
+import { checkAuth } from "./components/checkAuth";
 
 function App() {
   return (
@@ -8,4 +9,4 @@ function App() {
   );
 }
 
-export default App;
+export default checkAuth(App);

@@ -9,10 +9,10 @@ export const signInSchema = z
       .max(15, "Password can't be more than 15 characters")
       .regex(
         /^(?=.*[A-Z])(?=.*[a-z]).+$/,
-        "At least 1 Uppercase and 1 Lowercase"
+        "Password must contain at least 1 Uppercase and 1 Lowercase"
       )
       .regex(/^(?=.*\d)/, "Password must contain at least 1 number")
-      .regex(/^\S*$/, "Whitespace is not allowed")
+      .regex(/^\S*$/, "Whitespace is not allowed on Password")
       .regex(
         /^(?=.*[!@#$%^&*()])/,
         "Password must contain at least 1 Special Character"
@@ -30,10 +30,10 @@ export const signUpSchema = z
       .max(15, "Password can't be more than 15 characters")
       .regex(
         /^(?=.*[A-Z])(?=.*[a-z]).+$/,
-        "At least 1 Uppercase and 1 Lowercase"
+        "Password must contain at least 1 Uppercase and 1 Lowercase"
       )
       .regex(/^(?=.*\d)/, "Password must contain at least 1 number")
-      .regex(/^\S*$/, "Whitespace is not allowed")
+      .regex(/^\S*$/, "Whitespace is not allowed on Password")
       .regex(
         /^(?=.*[!@#$%^&*()])/,
         "Password must contain at least 1 Special Character"

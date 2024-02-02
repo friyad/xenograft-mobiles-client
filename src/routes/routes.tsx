@@ -9,12 +9,21 @@ import SmartphoneUpdate from "@/pages/SmartphoneUpdate";
 import { createBrowserRouter } from "react-router-dom";
 import AddSmartphone from "@/pages/AddSmartphone";
 import DuplicateSmartphone from "@/pages/DuplicateSmartphone";
+import NotFound from "@/pages/notFound";
 
 export const routes = createBrowserRouter([
   {
     path: "/",
     element: <App />,
     children: [
+      {
+        path: "/signin",
+        element: <SignIn />,
+      },
+      {
+        path: "/signup",
+        element: <SignUp />,
+      },
       {
         path: "",
         element: <Inventory />,
@@ -50,11 +59,7 @@ export const routes = createBrowserRouter([
     ],
   },
   {
-    path: "/signin",
-    element: <SignIn />,
-  },
-  {
-    path: "/signup",
-    element: <SignUp />,
+    path: "*",
+    element: <NotFound />,
   },
 ]);
