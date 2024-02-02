@@ -1,6 +1,7 @@
 import {
   Bell,
   CreditCard,
+  Loader,
   LogOut,
   MenuIcon,
   Settings,
@@ -23,6 +24,9 @@ import {
 } from "@/components/ui/popover";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import Sidebar from "./Sidebar";
+import { useSignOutMutation } from "@/redux/features/auth/authAPI";
+import { useDispatch } from "react-redux";
+import { setAuth } from "@/redux/features/auth/authSlice";
 
 const notifications = [
   {
@@ -44,12 +48,25 @@ interface NavbarProps {
 }
 
 const Navbar = ({ title }: NavbarProps) => {
+  const dispatch = useDispatch();
+  const [signOut, result] = useSignOutMutation(undefined);
+
+  const handleSignOut = async () => {
+    await signOut(undefined);
+    const state = {
+      isAuthenticated: false,
+      user: null,
+      isLoading: false,
+    };
+    dispatch(setAuth(state));
+  };
+
   return (
     <div className="fixed top-0 w-full z-50 md:relative">
       <Sheet>
         <div className="h-16 mxl:h-20 bg-[#FDFDFF] rounded-b-xl xl:rounded-b-3xl w-full">
           <div className="flex justify-between items-center px-7 md:px-4 lg:pl-6 3xl:pl-8 lg:pr-10 h-full">
-            <div className="flex justify-start items-center gap-4">
+            <div className="flex justify-start items-center gap-4 md:gap-0">
               <SheetTrigger asChild className="md:hidden">
                 <Button variant="outline" size="icon">
                   <MenuIcon />
@@ -124,8 +141,15 @@ const Navbar = ({ title }: NavbarProps) => {
 
                   <DropdownMenuSeparator />
 
-                  <DropdownMenuItem>
-                    <LogOut className="mr-2 h-4 w-4" />
+                  <DropdownMenuItem
+                    onClick={handleSignOut}
+                    className="text-red-500 font-semibold"
+                  >
+                    {result.isLoading ? (
+                      <Loader className="mr-2 size-4" />
+                    ) : (
+                      <LogOut className="mr-2 size-4" />
+                    )}
                     <span>Log out</span>
                   </DropdownMenuItem>
                 </DropdownMenuContent>
