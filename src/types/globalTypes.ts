@@ -42,6 +42,7 @@ export interface ISmartPhone {
 
 export interface ISmartPhone2 {
   _id?: string;
+  prevID?: string;
   name: string;
   price: number;
   quantity: number;
@@ -72,7 +73,7 @@ export interface ISell {
   totalQuantity: number;
   buyerName: string;
   saleDate: string;
-  product: ISmartPhone;
+  product: ISmartPhone2;
 }
 
 export interface IInputItem {

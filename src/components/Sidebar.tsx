@@ -28,7 +28,7 @@ const Sidebar = () => {
           <NavLink to="/sale" unstable_viewTransition>
             <button>
               <BadgeDollarSign />
-              <span>Sale</span>
+              <span>Sell</span>
             </button>
           </NavLink>
         </li>

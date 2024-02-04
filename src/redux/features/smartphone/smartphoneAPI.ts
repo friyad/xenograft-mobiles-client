@@ -1,6 +1,11 @@
 import { api } from "@/redux/api/apiSlice";
+import store from "@/redux/store";
 import { ISmartPhone2, UpdateSpArg } from "@/types/globalTypes";
-import { handlePhoneErr } from "@/utils/smartphoneUtils";
+import {
+  getFilterItemsFromData,
+  handlePhoneErr,
+} from "@/utils/smartphoneUtils";
+import { setFilterInit } from "./filter/filterSlice";
 
 const inventoryAPI = api.injectEndpoints({
   endpoints: (builder) => ({
@@ -9,6 +14,16 @@ const inventoryAPI = api.injectEndpoints({
         url: "/smartphones",
         credentials: "include",
       }),
+      transformResponse: (result: any) => {
+        const filterData = getFilterItemsFromData(result.data);
+        store.dispatch(
+          setFilterInit({
+            items: filterData,
+            phones: [...result.data],
+          })
+        );
+        return result;
+      },
       providesTags: ["smartphones"],
     }),
     getSingleSmartphone: builder.query({
@@ -16,7 +31,7 @@ const inventoryAPI = api.injectEndpoints({
         url: `/smartphone/${id}`,
         credentials: "include",
       }),
-      providesTags: (res, err, arg) => [{ type: "singlePhone", id: arg }],
+      providesTags: (_res, _err, arg) => [{ type: "singlePhone", id: arg }],
     }),
     addSmartphone: builder.mutation({
       query: (data: ISmartPhone2) => ({
@@ -45,7 +60,7 @@ const inventoryAPI = api.injectEndpoints({
         body: data.smartphone,
       }),
       transformErrorResponse: handlePhoneErr,
-      invalidatesTags: (res, err, arg: UpdateSpArg) => [
+      invalidatesTags: (_res, _err, arg: UpdateSpArg) => [
         "smartphones",
         { type: "singlePhone", id: arg.id },
       ],
@@ -65,6 +80,7 @@ const inventoryAPI = api.injectEndpoints({
 
 export const {
   useGetSmartphonesQuery,
+  useLazyGetSmartphonesQuery,
   useAddSmartphoneMutation,
   useGetSingleSmartphoneQuery,
   useLazyGetSingleSmartphoneQuery,

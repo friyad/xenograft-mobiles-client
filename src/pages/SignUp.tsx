@@ -29,6 +29,7 @@ const SignUp = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<SignUpCredentials>({
     resolver: zodResolver(signUpSchema),
@@ -52,6 +53,7 @@ const SignUp = () => {
 
   useEffect(() => {
     if (isSuccess) {
+      reset({});
       toast({
         itemID: "sign",
         duration: 3000,

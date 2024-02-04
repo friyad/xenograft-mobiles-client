@@ -5,7 +5,10 @@ import DashboardLayout from "@/layouts/DashboardLayout";
 import { Grid2X2, PlusIcon, Rows3 } from "lucide-react";
 import SmartPhoneCard from "@/components/inventory/SmartPhoneCard";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { setCardView } from "@/redux/features/smartphone/smartphoneSlice";
+import {
+  setCardView,
+  setIdForDelete,
+} from "@/redux/features/smartphone/smartphoneSlice";
 import { useNavigate } from "react-router-dom";
 import {
   useDeleteSmartphoensMutation,
@@ -24,20 +27,16 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 import { useToast } from "@/components/ui/use-toast";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import DeleteSection from "@/components/inventory/DeleteSection";
-import { getFilterItemsFromData } from "@/utils/smartphoneUtils";
-import {
-  handleSearch,
-  setFilterInit,
-} from "@/redux/features/smartphone/filter/filterSlice";
+import { handleSearch } from "@/redux/features/smartphone/filter/filterSlice";
 
 const Inventory = () => {
   const { toast } = useToast();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const [deleteSmartphones] = useDeleteSmartphoensMutation();
-  const { data, isLoading } = useGetSmartphonesQuery(undefined);
+  const { isLoading } = useGetSmartphonesQuery(undefined);
   const [deletePhoneID, setDeletePhoneID] = useState<string>("");
   const { cardView } = useAppSelector((state) => state.smartphone);
   const { filteredSmartPhones } = useAppSelector((state) => state.filters);
@@ -53,6 +52,8 @@ const Inventory = () => {
         duration: 2000,
       });
       setDeletePhoneID("");
+      // it will delete the phone id from the build delete too
+      dispatch(setIdForDelete(deletePhoneID));
     } else {
       toast({
         variant: "error",
@@ -62,19 +63,6 @@ const Inventory = () => {
       setDeletePhoneID("");
     }
   };
-
-  useEffect(() => {
-    if (data?.data) {
-      // Getting initial filter states from the smartphones data after fetching
-      const filterData = getFilterItemsFromData(data?.data);
-      dispatch(
-        setFilterInit({
-          items: filterData,
-          phones: [...data?.data],
-        })
-      );
-    }
-  }, [isLoading]);
 
   return (
     <DashboardLayout title="Inventory">
@@ -169,10 +157,12 @@ const Inventory = () => {
             }`}
           >
             {isLoading ? (
+              // If it is loading....
               [1, 2, 3, 4, 5, 6, 7, 8].map((item) => (
                 <SmartphoneSkeleton key={item} cardView={cardView} />
               ))
             ) : filteredSmartPhones ? (
+              // If it is not loading but don't has any data
               filteredSmartPhones.length <= 0 ? (
                 <div
                   className={`min-h-[calc(60vh)] flex flex-col gap-6 justify-center items-center ${
@@ -196,6 +186,7 @@ const Inventory = () => {
                   </Button>
                 </div>
               ) : (
+                // if data has
                 filteredSmartPhones.map((item: ISmartPhone2) => {
                   return (
                     <SmartPhoneCard

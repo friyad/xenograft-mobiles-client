@@ -51,8 +51,6 @@ export const handleAuthErr = (
   meta: FetchBaseQueryMeta,
   arg: SignUpCredentials | SignInCredentials
 ) => {
-  console.log(result);
-
   if (result?.data?.message) {
     return {
       status: false,

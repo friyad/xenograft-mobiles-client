@@ -1,5 +1,6 @@
 import {
   FilterItemsType,
+  ISell,
   ISmartPhone,
   ISmartPhone2,
   InitailFilterItemsType,
@@ -9,8 +10,8 @@ import { format } from "date-fns";
 
 export const handlePhoneErr = (
   result: any,
-  meta: FetchBaseQueryMeta,
-  arg: ISmartPhone2 | { id: string; smartphone: ISmartPhone2 }
+  _meta: FetchBaseQueryMeta,
+  _arg: ISmartPhone2 | { id: string; smartphone: ISmartPhone2 } | ISell
 ) => {
   if (result?.data?.message) {
     return {
@@ -119,7 +120,11 @@ export const getFilterItemsFromData = (datas: ISmartPhone2[]) => {
   };
 };
 
-const checkIsOutOfRange = (min: string, max: string, phnDate: string) => {
+export const checkIsOutOfRange = (
+  min: string,
+  max: string,
+  phnDate: string
+) => {
   const minTime = new Date(min).getTime();
   const maxTime = new Date(max).getTime();
   const phnTime = new Date(phnDate).getTime();

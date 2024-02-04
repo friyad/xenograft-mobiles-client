@@ -76,7 +76,6 @@ const filtersSlice = createSlice({
     ) => {
       const { property, value } = action.payload;
       state.filterItems[property] = value;
-
       // check if it is an array and the the array is empty then make it null
       if (
         Array.isArray(state.filterItems[property]) &&
@@ -102,18 +101,10 @@ const filtersSlice = createSlice({
       action: PayloadAction<{ isAll: boolean; property: string }>
     ) => {
       if (action.payload.isAll) {
-        state.filterItems = {
-          price: null,
-          releasedDate: null,
-          brand: null,
-          model: null,
-          opSystem: null,
-          storageCapacityGB: null,
-          screenSize: null,
-          color: null,
-          battery: null,
-        };
+        // back to the initial state
+        state.filterItems = { ...initialState.filterItems };
       } else {
+        // clear a single filter
         state.filterItems[action.payload.property] = null;
       }
       state.openedFilterItem = null;
@@ -137,6 +128,8 @@ const filtersSlice = createSlice({
       state.smartphoneDatas = phones;
       state.filteredSmartPhones = phones;
       state.initailFilterItems = items;
+      state.filterItems = { ...initialState.filterItems };
+      state.openedFilterItem = null;
     },
   },
 });
