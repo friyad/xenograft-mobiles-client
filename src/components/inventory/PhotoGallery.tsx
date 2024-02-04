@@ -1,22 +1,27 @@
 import { useState } from "react";
 
-const PhotoGallery = () => {
-  const [preview, setPreview] = useState(
-    "https://images.unsplash.com/flagged/photo-1571366992942-be878c7b10c0?auto=format&q=75&fit=crop&w=600"
-  );
+interface PhotoGalleryProps {
+  images: string[];
+}
+
+const PhotoGallery = ({ images }: PhotoGalleryProps) => {
+  const [preview, setPreview] = useState({
+    id: 1,
+    img: images[0],
+  });
 
   const thumbs = [
     {
       id: 1,
-      img: "https://images.unsplash.com/flagged/photo-1571366992791-2ad2078656cb?auto=format&q=75&fit=crop&w=250",
+      img: images[0] || "",
     },
     {
       id: 2,
-      img: "https://images.unsplash.com/flagged/photo-1571366992791-2ad2078656cb?auto=format&q=75&fit=crop&w=250",
+      img: images[1] || "",
     },
     {
       id: 3,
-      img: "https://images.unsplash.com/flagged/photo-1571366992791-2ad2078656cb?auto=format&q=75&fit=crop&w=250",
+      img: images[2] || "",
     },
   ];
 
@@ -27,8 +32,10 @@ const PhotoGallery = () => {
           return (
             <div
               key={thumb.id}
-              onClick={() => setPreview(thumb.img)}
-              className="overflow-hidden rounded-lg bg-gray-100 hover:border-2 border-primary cursor-pointer max-h-[160px]"
+              onClick={() => setPreview(thumb)}
+              className={`overflow-hidden rounded-lg bg-gray-100 hover:border-primary cursor-pointer max-h-[140px] shadow-xl border-2 ${
+                preview.id === thumb.id ? "border-primary border-4" : ""
+              }`}
             >
               <img
                 src={thumb.img}
@@ -41,9 +48,9 @@ const PhotoGallery = () => {
         })}
       </div>
 
-      <div className="relative overflow-hidden rounded-lg bg-gray-100 lg:col-span-4 group">
+      <div className="relative overflow-hidden rounded-2xl bg-gray-100 lg:col-span-4 group border-4 shadow-xl">
         <img
-          src={preview}
+          src={preview.img}
           loading="lazy"
           alt=""
           className="h-full w-full object-cover object-center group-hover:scale-110 transition-transform duration-500"

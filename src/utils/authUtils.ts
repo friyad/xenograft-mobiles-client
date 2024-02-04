@@ -1,6 +1,6 @@
 import { setAuth } from "@/redux/features/auth/authSlice";
 import store from "@/redux/store";
-import { SignUpCredentials } from "@/types/globalTypes";
+import { SignInCredentials, SignUpCredentials } from "@/types/globalTypes";
 import { LazyQueryTrigger } from "@reduxjs/toolkit/dist/query/react/buildHooks";
 import {
   QueryDefinition,
@@ -46,10 +46,10 @@ export const handleGetMeCall = async (
   }
 };
 
-export const handleErrorResponse = (
+export const handleAuthErr = (
   result: any,
   meta: FetchBaseQueryMeta,
-  arg: SignUpCredentials
+  arg: SignUpCredentials | SignInCredentials
 ) => {
   console.log(result);
 

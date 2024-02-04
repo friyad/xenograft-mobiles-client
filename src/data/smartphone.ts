@@ -3,7 +3,7 @@ import { IInputItem } from "@/types/globalTypes";
 // This data will generate the JSX form inputs dynamically using loop
 export const smartPhoneFormInputsData: IInputItem[] = [
   { id: 1, field: "name", type: "text", name: "Name", colSpan: 4 },
-  { id: 2, field: "price", type: "number", name: "Price", colSpan: 2 },
+  { id: 2, field: "price", type: "number", name: "Price ($)", colSpan: 2 },
   { id: 3, field: "quantity", type: "number", name: "Quantity", colSpan: 2 },
   { id: 6, field: "brand", type: "text", name: "Brand", colSpan: 2 },
   { id: 7, field: "model", type: "text", name: "Model", colSpan: 2 },
@@ -55,7 +55,7 @@ export const smartPhoneFormInputsData: IInputItem[] = [
   },
   { id: 18, field: "simCard", type: "text", name: "SIM Card Type", colSpan: 2 },
   { id: 19, field: "camera", type: "number", name: "Camera (MP)", colSpan: 1 },
-  { id: 20, field: "camera2", type: "number", name: "Camera (MP)", colSpan: 1 },
+  { id: 20, field: "camera2", type: "number", name: "-", colSpan: 1 },
   { id: 21, field: "charger", type: "number", name: "Charger (W)", colSpan: 2 },
   { id: 22, field: "usbType", type: "text", name: "USB Type", colSpan: 2 },
   // { id: 25, field: "rating", type: "text", name: "" },

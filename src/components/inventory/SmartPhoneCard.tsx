@@ -1,57 +1,59 @@
 import { Card, CardContent, CardFooter, CardHeader } from "../ui/card";
 import { Button } from "../ui/button";
-import { Link } from "react-router-dom";
-
-export const data = {
-  name: "Samsung Galaxy S20 Ultra", // ----
-  price: 999.99, // ---
-  quantity: 50,
-  images: ["image1.jpg", "image2.jpg"], // ----
-  releasedDate: new Date("2024-02-01"), // ----
-  brand: "Samsung", // ----
-  model: "S20 Ultra", // ---
-  opSystem: "Android", // ---
-  storageCapacityGB: [128, 256], // ----
-  ram: [12, 16], // ---
-  processor:
-    "Octa-core (1x3.3 GHz Cortex-X4 & 5x3.2 GHz Cortex-A720 & 2x2.3 GHz Cortex-A520)", // ---
-  screenSize: 6.78, // ---
-  color: "Mystic Black", // ---
-  cellularTechnology: "4G", // ---
-  battery: 5000, // ---
-  simCard: "Nano", // ---
-  camera: [50, 12], // ---
-  charger: 65, // ---
-  usbType: "USB Type-C", // ---
-  aboutThisPhone: "High-end smartphone with advanced camera features.", // ------
-  condition: "New", // ---
-  rating: 4.8, // ---
-  sells: 20,
-  inStock: true,
-};
+import { Link, useNavigate } from "react-router-dom";
+import { ISmartPhone2 } from "@/types/globalTypes";
+import { CheckCircle } from "lucide-react";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { setIdForDelete } from "@/redux/features/smartphone/smartphoneSlice";
 
 interface SmartPhoneCardProps {
   cardView: boolean;
+  data: ISmartPhone2;
+  setDeletePhoneID: Function;
 }
 
-const SmartPhoneCard = ({ cardView }: SmartPhoneCardProps) => {
+const SmartPhoneCard = ({
+  cardView,
+  data,
+  setDeletePhoneID,
+}: SmartPhoneCardProps) => {
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+  const { bulkIdsForDelete } = useAppSelector((state) => state.smartphone);
+
   return (
     <>
       {cardView ? (
         // ------------------------ Grid View ------------------------
-        <Card className="shadow-2xl shadow-cusBlack/10 hover:shadow-sm transition-all duration-200 group">
-          <Link to={`/inventory/46464`} unstable_viewTransition>
-            <CardHeader className="cursor-pointer relative overflow-hidden aspect-square mx-auto">
+        <Card className="shadow-2xl shadow-cusBlack/10 hover:shadow-sm transition-all duration-200 group flex flex-col justify-between">
+          <div
+            onClick={() => dispatch(setIdForDelete(data._id!))}
+            className="relative cursor-pointer"
+          >
+            <CardHeader className="overflow-hidden aspect-square mx-auto">
               <img
-                src="https://static-01.daraz.com.bd/p/8f5341e8106e7070aaaec56be0a2647e.jpg_300x0q75.webp"
+                src={data.images[0]}
                 alt=""
-                className="group-hover:scale-110 transition-transform duration-300"
+                className="group-hover:scale-[1.019] transition-transform duration-300"
               />
             </CardHeader>
-          </Link>
+
+            {bulkIdsForDelete.includes(data._id!) ? (
+              <div className="absolute inset-0 top-0 bg-white/80 z-20 flex justify-center items-center">
+                <CheckCircle
+                  strokeWidth="3"
+                  className="size-9 xl:size-11 2xl:size-12 3xl:size-14 text-primary"
+                />
+              </div>
+            ) : (
+              <div className="absolute inset-0 top-0 z-20 bg-white/10 invisible group-hover:visible">
+                {/* <Circle className="m-5 size-8 text-primary" strokeWidth="5" /> */}
+              </div>
+            )}
+          </div>
 
           <CardContent className="border-t">
-            <Link to={`/inventory/46464`} unstable_viewTransition>
+            <Link to={`/inventory/${data._id}`} unstable_viewTransition>
               <h3 className="text-sm xl:text-base 2xl:text-lg font-semibold text-cusBlack cursor-pointer group-hover:text-primary">
                 {data.name}
               </h3>
@@ -94,35 +96,57 @@ const SmartPhoneCard = ({ cardView }: SmartPhoneCardProps) => {
 
           <CardFooter className="flex justify-between gap-1 sm:gap-3">
             <Button
+              onClick={() => setDeletePhoneID(data._id!)}
+              variant="destructive"
+              className="w-full rounded"
+            >
+              Delete
+            </Button>
+            <Button
+              onClick={() =>
+                navigate(`/inventory/${data._id}`, {
+                  unstable_viewTransition: true,
+                })
+              }
               variant="destructive"
               className="w-full rounded bg-primary hover:bg-primary"
             >
-              Duplicate & Edit
-            </Button>
-            <Button
-              variant="destructive"
-              className="w-full rounded bg-opacity-80"
-            >
-              Delete
+              View
             </Button>
           </CardFooter>
         </Card>
       ) : (
         // ------------------------ List View ------------------------
         <Card className="shadow-md shadow-cusBlack/10 hover:shadow-sm transition-all duration-200 group flex">
-          <Link to={`/inventory/46464`} unstable_viewTransition>
+          <div
+            onClick={() => dispatch(setIdForDelete(data._id!))}
+            className="relative cursor-pointer"
+          >
             <CardHeader className="cursor-pointer relative overflow-hidden size-[200px] 2xl:size-[250px]">
               <img
-                src="https://static-01.daraz.com.bd/p/8f5341e8106e7070aaaec56be0a2647e.jpg_300x0q75.webp"
+                src={data.images[0]}
                 alt=""
-                className="group-hover:scale-110 transition-transform duration-300"
+                className="group-hover:scale-[1.019] transition-transform duration-300"
               />
             </CardHeader>
-          </Link>
+
+            {bulkIdsForDelete.includes(data._id!) ? (
+              <div className="absolute inset-0 top-0 bg-white/80 z-20 flex justify-center items-center">
+                <CheckCircle
+                  strokeWidth="3"
+                  className="size-9 xl:size-11 2xl:size-12 3xl:size-14 text-primary"
+                />
+              </div>
+            ) : (
+              <div className="absolute inset-0 top-0 z-20 bg-white/10 invisible group-hover:visible">
+                {/* <Circle className="m-5 size-8 text-primary" strokeWidth="5" /> */}
+              </div>
+            )}
+          </div>
 
           <div className="flex flex-col justify-between border-l flex-1">
             <CardContent className="">
-              <Link to={`/inventory/46464`} unstable_viewTransition>
+              <Link to={`/inventory/${data._id}`} unstable_viewTransition>
                 <h3 className="text-sm xl:text-base 2xl:text-lg 3xl:text-xl font-semibold text-cusBlack cursor-pointer group-hover:text-primary">
                   {data.name}
                 </h3>
@@ -165,14 +189,20 @@ const SmartPhoneCard = ({ cardView }: SmartPhoneCardProps) => {
 
             <CardFooter className="flex justify-between gap-1 sm:gap-3 w-fit ml-auto">
               <Button
+                onClick={() =>
+                  navigate(`/inventory/${data._id}`, {
+                    unstable_viewTransition: true,
+                  })
+                }
                 variant="destructive"
                 className="w-full rounded bg-primary hover:bg-primary"
               >
-                Duplicate & Edit
+                View
               </Button>
               <Button
+                onClick={() => setDeletePhoneID(data._id!)}
                 variant="destructive"
-                className="w-full rounded bg-opacity-80"
+                className="w-full rounded"
               >
                 Delete
               </Button>

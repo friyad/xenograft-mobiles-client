@@ -16,7 +16,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { ArrowLeft } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect } from "react";
 import { smartPhoneFormInputsData } from "@/data/smartphone";
 import {
   Select,
@@ -30,10 +30,15 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import PhonePhotoUpload from "@/components/inventory/PhonePhotoUpload";
 import { Label } from "@/components/ui/label";
+import { useAddSmartphoneMutation } from "@/redux/features/smartphone/smartphoneAPI";
+import { useToast } from "@/components/ui/use-toast";
+import { formatePhoneDataForBackend } from "@/utils/smartphoneUtils";
 
 const AddSmartphone = () => {
+  const { toast } = useToast();
   const navigate = useNavigate();
-  const [date, setDate] = useState<Date>();
+  const [addSmartphone, result] = useAddSmartphoneMutation(undefined);
+  const { isLoading, isSuccess, isError, data, error } = result;
   const {
     register,
     handleSubmit,
@@ -41,6 +46,7 @@ const AddSmartphone = () => {
     clearErrors,
     watch,
     setError,
+    reset,
     formState: { errors, defaultValues },
   } = useForm<ISmartPhone>({
     resolver: zodResolver(smartPhoneValidation),
@@ -52,9 +58,28 @@ const AddSmartphone = () => {
         shouldFocus: true,
       });
     }
-
-    console.log(data);
+    const smartphone = formatePhoneDataForBackend(data);
+    addSmartphone(smartphone);
   };
+
+  useEffect(() => {
+    if (isSuccess) {
+      reset({});
+      toast({
+        duration: 3000,
+        variant: "success",
+        description: data?.message,
+      });
+    }
+    if (isError) {
+      toast({
+        duration: 3000,
+        // @ts-ignore
+        description: error?.message,
+        variant: "error",
+      });
+    }
+  }, [isSuccess, isError]);
 
   return (
     <DashboardLayout title="">
@@ -116,11 +141,15 @@ const AddSmartphone = () => {
                     variant={"outline"}
                     className={cn(
                       "w-full justify-start text-left font-normal inputEl",
-                      !date && "text-muted-foreground"
+                      !watch().releasedDate && "text-muted-foreground"
                     )}
                   >
                     <CalendarIcon className="mr-2 h-4 w-4" />
-                    {date ? format(date, "PPP") : <span>Pick a date</span>}
+                    {watch().releasedDate ? (
+                      format(watch().releasedDate, "PPP")
+                    ) : (
+                      <span>Pick a date</span>
+                    )}
                   </Button>
                 </PopoverTrigger>
                 <PopoverContent className="w-auto p-0">
@@ -128,9 +157,8 @@ const AddSmartphone = () => {
                     {...register("releasedDate")}
                     id="add_releasedDate"
                     mode="single"
-                    selected={date}
+                    selected={new Date(watch().releasedDate)}
                     onSelect={(e: any) => {
-                      setDate(e);
                       setValue("releasedDate", format(e, "P"));
                       clearErrors("releasedDate");
                     }}
@@ -196,6 +224,7 @@ const AddSmartphone = () => {
                     type={type}
                     id={`add_${field}`}
                     placeholder="Type here..."
+                    step="0.01"
                     onKeyDown={(evt) => {
                       if (type === "number") {
                         ["e", "E", "+", "-"].includes(evt.key) &&
@@ -225,6 +254,8 @@ const AddSmartphone = () => {
               variant="default"
               size="lg"
               className="w-full col-span-4 mt-4"
+              loading={isLoading}
+              disabled={isLoading}
             >
               Submit
             </Button>

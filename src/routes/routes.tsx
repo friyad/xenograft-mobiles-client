@@ -8,8 +8,8 @@ import SignUp from "@/pages/SignUp";
 import SmartphoneUpdate from "@/pages/SmartphoneUpdate";
 import { createBrowserRouter } from "react-router-dom";
 import AddSmartphone from "@/pages/AddSmartphone";
-import DuplicateSmartphone from "@/pages/DuplicateSmartphone";
 import NotFound from "@/pages/notFound";
+import DuplicateSmartphone from "@/pages/DuplicateSmartphone";
 
 export const routes = createBrowserRouter([
   {

@@ -1,6 +1,6 @@
 import { api } from "@/redux/api/apiSlice";
 import { SignInCredentials, SignUpCredentials } from "@/types/globalTypes";
-import { handleErrorResponse } from "@/utils/authUtils";
+import { handleAuthErr } from "@/utils/authUtils";
 
 const authAPI = api.injectEndpoints({
   endpoints: (builder) => ({
@@ -11,7 +11,7 @@ const authAPI = api.injectEndpoints({
         body: data,
         credentials: "include",
       }),
-      transformErrorResponse: handleErrorResponse,
+      transformErrorResponse: handleAuthErr,
     }),
 
     handleSignIn: builder.mutation({
@@ -21,7 +21,7 @@ const authAPI = api.injectEndpoints({
         body: data,
         credentials: "include",
       }),
-      transformErrorResponse: handleErrorResponse,
+      transformErrorResponse: handleAuthErr,
     }),
 
     getMe: builder.query({
