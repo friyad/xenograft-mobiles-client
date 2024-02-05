@@ -23,6 +23,7 @@ import { memo, useEffect } from "react";
 import { z } from "zod";
 import { useSellNowMutation } from "@/redux/features/sell/sellAPI";
 import { useToast } from "../ui/use-toast";
+import { useNavigate } from "react-router-dom";
 
 interface SetNowValues {
   buyerName: string;
@@ -64,6 +65,7 @@ const SellNowForm = ({ phone, setSellNowOpen }: SellNowFormProps) => {
   } = useForm<SetNowValues>({
     resolver: zodResolver(sellNowValidation),
   });
+  const navigate = useNavigate();
   const { toast } = useToast();
   const [sellNow, result] = useSellNowMutation();
   const { isLoading, isSuccess, isError, data, error } = result;
@@ -81,6 +83,7 @@ const SellNowForm = ({ phone, setSellNowOpen }: SellNowFormProps) => {
     if (isSuccess) {
       reset({});
       setSellNowOpen(false);
+      navigate("/sale-history", { unstable_viewTransition: true });
       toast({
         itemID: "sign",
         duration: 4000,

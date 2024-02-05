@@ -163,12 +163,12 @@ export const getFilteredPhones = (
       ? checkIsOutOfRange(
           releasedDate?.min,
           releasedDate?.max,
-          phone.releasedDate
+          format(phone.releasedDate, "P")
         )
       : checkIsOutOfRange(
           initItems.releasedDate.min,
           initItems.releasedDate.max,
-          phone.releasedDate
+          format(phone.releasedDate, "P")
         );
 
     const brnd = brand
