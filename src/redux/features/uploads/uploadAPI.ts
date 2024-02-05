@@ -8,7 +8,7 @@ const extendedUploadAPI = uploadAPI.injectEndpoints({
         method: "POST",
         body: data,
       }),
-      transformResponse: (result: any, meta, arg) => {
+      transformResponse: (result: any) => {
         return result.secure_url;
       },
     }),

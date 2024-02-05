@@ -29,7 +29,6 @@ const SignIn = () => {
   const {
     register,
     handleSubmit,
-    reset,
     formState: { errors },
   } = useForm<SignInCredentials>({
     resolver: zodResolver(signInSchema),
