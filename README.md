@@ -108,5 +108,10 @@ This project incorporates features such as secure JWT authentication, complete C
 git clone <repo_url>
 ```
 
-2. Run `npm install` to install dependencies.
+2. Run this command to install dependencies.
+
+```
+npm install
+```
+
 3. Use scripts mentioned above for various tasks.
