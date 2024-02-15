@@ -4,7 +4,8 @@
 [Live Demo Link](https://xenograft-mobiles.netlify.app)\
 \
 \
-![image](https://github.com/Porgramming-Hero-web-course/l2b2-full-stack-a5-client-side-friyad/assets/86700138/b9982912-4974-47f6-817c-8e1f0cb41ba9)
+![Dashboard Photo](https://github.com/friyad/xenograft-mobiles-client/assets/86700138/1c0e09e1-fdf1-4c82-9011-81f62c100073)
+
 
 ## Description
 
