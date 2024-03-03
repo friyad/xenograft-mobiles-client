@@ -9,7 +9,7 @@
 
 ## Description
 
-XenoGraft Mobiles is a comprehensive smartphone management dashboard designed for efficiently managing smartphone inventory, tracking sales, and analyzing sales history. It's not a whole website but mejor part of a large mobile selling platform. Where every phone seller has access to their dashboard to manage smartphones, sell smartphones, and track the sales history.
+XenoGraft Mobiles is a comprehensive smartphone management dashboard designed for efficiently managing smartphone inventory, tracking sales, and analyzing sales history. It's not a whole website but a major part of a large mobile selling platform. Where every phone seller has access to their dashboard to manage smartphones, sell smartphones, and track the sales history.
 
 The primary objective of this project is to create a user-friendly dashboard that empowers users to manage smartphone inventory and sales seamlessly.
 
@@ -29,7 +29,7 @@ This project incorporates features such as secure JWT authentication, complete C
 
 - Add A New Smartphone to the Inventory.
 - Delete existing smartphone.
-- Duplicate & Edit / Create Variant from exising smartphone.
+- Duplicate & Edit / Create Variant from an existing smartphone.
 - Update Smartphone Details.
 - View the list of smartphones in the inventory.
 
@@ -41,24 +41,24 @@ This project incorporates features such as secure JWT authentication, complete C
 
 #### Bulk Delete Product Options
 
-- User are able to select multiple smartphone and click on delete icon to delete selected phones.
+- Users are able to select multiple smartphones and click on the delete icon to delete selected phones.
 
 #### Others
 
-- Search option to search a smartphone in inventory
+- Search option to search for a smartphone in inventory
 - Grid & List view option to view smartphones in different way.
 
 ### 3. Sales Management
 
 - User can select a smartphone to sell from the **Sell** page.
-- Then complete the sell with a form including quantity, buyer name, and sale date.
+- Then complete the sale with a form including quantity, buyer name, and sale date.
 - The system will track how many quantities are sold off a phone, and it will be automatically updated to the product on the inventory
 - Products with zero quantity are automatically removed from the inventory.
 
 ### 4. Sales History
 
-- If a product is sold, this product data and few additional data like sell quantity, buyer name and sale date will be stored to the **Sales History**.
-- After that user will be able to see his entire sales history from **Sales History** page.
+- If a product is sold, this product data and a few additional data like sell quantity, buyer name, and sale date will be stored in the **Sales History**.
+- After that user will be able to see his entire sales history from the **Sales History** page.
 - View sales history categorized by weekly, daily, monthly, and yearly periods.
 
 ### 5. User Interface Features
@@ -68,8 +68,8 @@ This project incorporates features such as secure JWT authentication, complete C
 - Data Caching to prevent unnecessary API calls and save the API cost.
 - Implementation of Re-fetching functionality for data accuracy.
 - Smooth transition on route changing.
-- Nice Modals, Selects, Date Picker, Buttons and other UI components.
-- 100% responsive in all devices.
+- Nice Modals, Selects, Date Picker, Buttons, and other UI components.
+- 100% responsive on all devices.
 - Skeleton view on loading.
 - Resizable sidebar.
 - Overall a smooth experience.
