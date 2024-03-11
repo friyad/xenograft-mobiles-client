@@ -3,9 +3,6 @@
 [Server Source Code](https://github.com/friyad/xenograft-mobiles-server)\
 \
 \
-[Live Demo Link](https://xenograft-mobiles.netlify.app)\
-\
-\
 [![Overview Video](https://github.com/friyad/xenograft-mobiles-client/assets/86700138/22566093-8e7a-45bb-b006-1152630d0527)](https://www.youtube.com/watch?v=3blZOYzEYtI)
 
 
@@ -31,7 +28,7 @@ This project incorporates features such as secure JWT authentication, complete C
 
 - Add A New Smartphone to the Inventory.
 - Delete existing smartphone.
-- Duplicate & Edit / Create Variant from an existing smartphone.
+- Duplicate & Edit / Create Variants from an existing smartphone.
 - Update Smartphone Details.
 - View the list of smartphones in the inventory.
 
@@ -60,7 +57,7 @@ This project incorporates features such as secure JWT authentication, complete C
 ### 4. Sales History
 
 - If a product is sold, this product data and a few additional data like sell quantity, buyer name, and sale date will be stored in the **Sales History**.
-- After that user will be able to see his entire sales history from the **Sales History** page.
+- After that, the user can see his entire sales history from the **Sales History** page.
 - View sales history categorized by weekly, daily, monthly, and yearly periods.
 
 ### 5. User Interface Features
@@ -79,7 +76,7 @@ This project incorporates features such as secure JWT authentication, complete C
 #### Others
 
 - Use of Toast to show error and success messages.
-- Privet Route to protect the privet pages from unauthenticated users.
+- Privet Route to protect the private pages from unauthenticated users.
 - Dynamic Input field generations for forms.
 - Form Validations using complete type safe ZOD package with react-hook-form.
 
@@ -108,13 +105,19 @@ This project incorporates features such as secure JWT authentication, complete C
 1. Clone the repository.
 
 ```
-git clone <repo_url>
+git clone https://github.com/friyad/xenograft-mobiles-client.git
 ```
 
-2. Run this command to install dependencies.
+2. Go to the directory.
+
+```
+cd xenograft-mobiles-client
+```
+
+3. Run this command to install dependencies.
 
 ```
 npm install
 ```
 
-3. Use scripts mentioned above for various tasks.
+Use the scripts mentioned above for various tasks.
